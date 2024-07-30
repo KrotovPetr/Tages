@@ -1,0 +1,49 @@
+.product {
+  width: 336px;
+  height: 352px;
+  border: 1px solid #eeeeee;
+  padding: 8px 0;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.product__image {
+  width: 238px;
+  height: 237px;
+  align-self: center;
+}
+.product__name {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 15px;
+}
+
+.product__secondary-info {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.product__discount-banner {
+  background-color: #eb5757;
+  color: white;
+  padding: 3px 5px;
+  font-weight: 500;
+  text-align: center;
+  font-size: 14px;
+  width: 80px;
+  z-index: 10;
+  left: -10px;
+}
+
+.product__code {
+  padding: 0 15px;
+  font-size: 10px;
+  color: #888888;
+  line-height: 22px;
+}

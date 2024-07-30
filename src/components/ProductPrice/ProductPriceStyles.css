@@ -1,0 +1,10 @@
+.product-price {
+  font-size: 1rem;
+}
+
+.product-price__old-price {
+  text-decoration: line-through;
+  color: #9b9a9a;
+  font-size: 16px;
+  line-height: 22px;
+}

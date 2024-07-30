@@ -1,0 +1,42 @@
+.select-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 300px;
+  }
+  
+  .select-container__label {
+    font-size: 12px;
+    margin: 0 0 8px 8px;
+    color: #4f4f4f;
+  }
+  
+  .select-container__wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .select-container__select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    appearance: none;
+  }
+  
+  .select-container__arrow {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    border-left: 0.4rem solid transparent;
+    border-right: 0.4rem solid transparent;
+    border-top: 0.4rem solid #000;
+  }
+  
