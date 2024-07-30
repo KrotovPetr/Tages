@@ -2,7 +2,7 @@
 
 set -e
 
-npm run build-only
+npm run build
 
 cd dist
 
