@@ -8,7 +8,7 @@
       "current_price": 355
     },
     "image": {
-      "url": "/Tages/images/doorHandle.png"
+      "url": "../images/doorHandle.png"
     },
     "material": 1
   },
