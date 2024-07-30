@@ -8,7 +8,7 @@
       "current_price": 355
     },
     "image": {
-      "url": "/Tages/images/doorHandle.png"
+      "url": "../images/doorHandle.png"
     },
     "material": 1
   },
@@ -17,8 +17,8 @@
     "name": "Ручка, нержавеющ сталь",
     "code": "L423WH",
     "price": {
-      "old_price": 400,
-      "current_price": 355
+      "old_price": 400.900,
+      "current_price": 355.555
     },
     "image": {
       "url": "/Tages/images/handle.png"
@@ -70,7 +70,7 @@
     "code": null,
     "price": {
       "old_price": null,
-      "current_price": 355
+      "current_price": 355.555
     },
     "image": {
       "url": "/Tages/images/handle.png"
