@@ -13,8 +13,8 @@
 
 <script setup lang="ts">
 import type { Product as ProductType } from '@/types/product'
-import ProductButtons from '@/components/ProductButtons/ProductButtons.vue'
-import ProductPrice from '../ProductPrice/ProductPrice.vue'
+import { ProductButtons } from '../ProductButtons'
+import { ProductPrice } from '../ProductPrice'
 
 const props = defineProps<{ product: ProductType }>()
 </script>

@@ -1,0 +1,12 @@
+.filter {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 25px;
+}
+
+@media (max-width: 767px) {
+  .filter {
+    flex-flow: column nowrap;
+    gap: 15px;
+  }
+}

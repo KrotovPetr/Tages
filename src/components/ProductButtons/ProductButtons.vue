@@ -12,44 +12,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import CartIcon from '@/components/icons/CartIcon.vue'
-import FavouriteIcon from '@/components/icons/FavouriteIcon.vue'
+import { ref, watchEffect } from 'vue'
+import { CartIcon, FavouriteIcon, InCartIcon, MarkedFavouriteIcon } from '@/icons'
 import type { Product as ProductType } from '@/types/product'
-import InCartIcon from '../icons/InCartIcon.vue'
-import MarkedFavouriteIcon from '../icons/MarkedFavouriteIcon.vue'
+import { useProductStore } from '@/stores/products'
 
 const props = defineProps<{ product: ProductType }>()
+const store = useProductStore()
 const inCart = ref(false)
 const inFavorites = ref(false)
 
-onMounted(() => {
-  const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-  const favorites = JSON.parse(localStorage.getItem('favorites') || '[]')
-  inCart.value = cart.some((item: ProductType) => item.id === props.product.id)
-  inFavorites.value = favorites.some((item: ProductType) => item.id === props.product.id)
+watchEffect(() => {
+  inCart.value = store.cart.some((item: ProductType) => item.id === props.product.id)
+  inFavorites.value = store.favorites.some((item: ProductType) => item.id === props.product.id)
 })
 
 const toggleCart = () => {
-  let cart = JSON.parse(localStorage.getItem('cart') || '[]')
-  if (inCart.value) {
-    cart = cart.filter((item: ProductType) => item.id !== props.product.id)
-  } else {
-    cart.push(props.product)
-  }
-  localStorage.setItem('cart', JSON.stringify(cart))
-  inCart.value = !inCart.value
+  inCart.value ? store.removeFromCart(props.product) : store.addToCart(props.product)
 }
 
 const toggleFavorites = () => {
-  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]')
-  if (inFavorites.value) {
-    favorites = favorites.filter((item: ProductType) => item.id !== props.product.id)
-  } else {
-    favorites.push(props.product)
-  }
-  localStorage.setItem('favorites', JSON.stringify(favorites))
-  inFavorites.value = !inFavorites.value
+  inFavorites.value ? store.removeFromFavorites(props.product) : store.addToFavorites(props.product)
 }
 </script>
 

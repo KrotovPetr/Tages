@@ -1,13 +1,13 @@
 <template>
-  <div class="select-container">
-    <label v-if="label" :for="id" class="select-container__label">{{ label }}</label>
-    <div class="select-container__wrapper">
-      <select :id="id" @change="handleChange" class="select-container__select">
-        <option v-for="option in options" :key="option.value" :value="option.value">
+  <div class="custom-select">
+    <label v-if="label" :for="id" class="custom-select__label">{{ label }}</label>
+    <div class="custom-select__wrapper">
+      <select :id="id" @change="handleChange" class="custom-select__select">
+        <option v-for="option in props.options" :key="option.value" :value="option.value">
           {{ option.text }}
         </option>
       </select>
-      <span class="select-container__arrow"></span>
+      <span class="custom-select__arrow"></span>
     </div>
   </div>
 </template>

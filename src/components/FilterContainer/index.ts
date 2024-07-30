@@ -1,1 +1,1 @@
-export { default } from './FilterContainer.vue'
+export { default as FilterContainer } from './FilterContainer.vue'

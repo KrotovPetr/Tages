@@ -10,8 +10,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useProductStore } from '@/stores/products'
-import FilterContainer from '@/components/FilterContainer/FilterContainer.vue'
-import ProductCard from './Product/ProductCard.vue'
+import { ProductCard } from '../ProductCard'
+import { FilterContainer } from '../FilterContainer'
 
 const store = useProductStore()
 const displayedProducts = ref(store.products)
@@ -31,16 +31,4 @@ const sortProducts = (order: 'asc' | 'desc') => {
 }
 </script>
 
-<style scoped>
-.product-list {
-  width: 100%;
-}
-
-.product-list__items {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-  gap: 15px;
-  padding: 15px 0;
-}
-</style>
+<style scoped src="./ProductList.css"></style>

@@ -25,17 +25,27 @@ export const useProductStore = defineStore('product', () => {
   }
 
   const addToFavorites = (product: Product) => {
-    if (!favorites.value.includes(product)) {
+    if (!favorites.value.some((item) => item.id === product.id)) {
       favorites.value.push(product)
       localStorage.setItem('favorites', JSON.stringify(favorites.value))
     }
   }
 
+  const removeFromFavorites = (product: Product) => {
+    favorites.value = favorites.value.filter((item) => item.id !== product.id)
+    localStorage.setItem('favorites', JSON.stringify(favorites.value))
+  }
+
   const addToCart = (product: Product) => {
-    if (!cart.value.includes(product)) {
+    if (!cart.value.some((item) => item.id === product.id)) {
       cart.value.push(product)
       localStorage.setItem('cart', JSON.stringify(cart.value))
     }
+  }
+
+  const removeFromCart = (product: Product) => {
+    cart.value = cart.value.filter((item) => item.id !== product.id)
+    localStorage.setItem('cart', JSON.stringify(cart.value))
   }
 
   const filterProducts = (materialId: number | null) => {
@@ -61,7 +71,9 @@ export const useProductStore = defineStore('product', () => {
     loadProducts,
     loadMaterials,
     addToFavorites,
+    removeFromFavorites,
     addToCart,
+    removeFromCart,
     filterProducts,
     sortProducts
   }

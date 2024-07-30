@@ -1,19 +1,26 @@
 <template>
   <div class="filter">
-    <CustomSelect id="sort-select" label="Сортировать по:" :options="sortOptions" @change="sort" />
+    <CustomSelect
+      id="sort-select"
+      label="Сортировать по:"
+      :options="sortOptions"
+      @change="sort"
+      class="filter__select"
+    />
     <CustomSelect
       id="filter-select"
       label="Материал: "
       :options="materialOptions"
       @change="filter"
+      class="filter__select"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, computed } from 'vue'
-import CustomSelect from '@/components/CustomSelect/CustomSelect.vue'
 import { useProductStore } from '@/stores/products'
+import { CustomSelect } from '../CustomSelect';
 
 const emit = defineEmits(['filter', 'sort'])
 const store = useProductStore()
@@ -46,4 +53,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped src="./FilterContainer.css"></style>
+<style scoped src="./FilterContainerStyles.css"></style>

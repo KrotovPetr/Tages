@@ -1,23 +1,10 @@
-<template>
-  <div id="app">
-    <div class="body">
-      <h1 class="page-name">Комплекты стеллажных систем</h1>
-      <ProductList />
-    </div>
-  </div>
-</template>
-
-<script setup lang="ts">
-import ProductList from './components/ProductList.vue'
-</script>
-
-<style>
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-#app {
+
+.app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   width: 100%;
@@ -27,7 +14,7 @@ import ProductList from './components/ProductList.vue'
   justify-content: center;
 }
 
-.body {
+.app__body {
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
@@ -37,8 +24,13 @@ import ProductList from './components/ProductList.vue'
   gap: 32px;
 }
 
-.page-name {
+.app__page-name {
   font-weight: 500;
   line-height: 48px;
 }
-</style>
+
+@media (max-width: 1439px) {
+  .app__body {
+    padding: 32px 0 32px 10px;
+  }
+}
