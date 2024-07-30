@@ -12,28 +12,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
 import { CartIcon, FavouriteIcon, InCartIcon, MarkedFavouriteIcon } from '@/icons'
 import type { Product as ProductType } from '@/types/product'
-import { useProductStore } from '@/stores/products'
+import { useProductButtons } from './useProductButtons'
 
 const props = defineProps<{ product: ProductType }>()
-const store = useProductStore()
-const inCart = ref(false)
-const inFavorites = ref(false)
-
-watchEffect(() => {
-  inCart.value = store.cart.some((item: ProductType) => item.id === props.product.id)
-  inFavorites.value = store.favorites.some((item: ProductType) => item.id === props.product.id)
-})
-
-const toggleCart = () => {
-  inCart.value ? store.removeFromCart(props.product) : store.addToCart(props.product)
-}
-
-const toggleFavorites = () => {
-  inFavorites.value ? store.removeFromFavorites(props.product) : store.addToFavorites(props.product)
-}
+const { inCart, inFavorites, toggleCart, toggleFavorites } = useProductButtons(props.product)
 </script>
 
 <style scoped src="./ProductButtonsStyles.css"></style>

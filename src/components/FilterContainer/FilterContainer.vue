@@ -4,53 +4,33 @@
       id="sort-select"
       label="Сортировать по:"
       :options="sortOptions"
-      @change="sort"
+      @change="handleSort"
       class="filter__select"
     />
     <CustomSelect
       id="filter-select"
       label="Материал: "
       :options="materialOptions"
-      @change="filter"
+      @change="handleFilter"
       class="filter__select"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed } from 'vue'
-import { useProductStore } from '@/stores/products'
-import { CustomSelect } from '../CustomSelect';
+import { CustomSelect } from '../CustomSelect'
+import { useFilterContainer } from './useFilterContainer'
 
 const emit = defineEmits(['filter', 'sort'])
-const store = useProductStore()
+const { sortOptions, materialOptions, sort, filter } = useFilterContainer()
 
-const sortOptions = [
-  { value: '', text: 'Без сортировки' },
-  { value: 'asc', text: 'Цена по возрастанию' },
-  { value: 'desc', text: 'Цена по убыванию' }
-]
-
-const materialOptions = computed(() => [
-  { value: '', text: 'Все материалы' },
-  ...store.materials.map((material) => ({
-    value: material.id,
-    text: material.name
-  }))
-])
-
-const sort = (value: string) => {
-  emit('sort', value)
+const handleSort = (value: string) => {
+  emit('sort', sort(value))
 }
 
-const filter = (value: string) => {
-  const materialId = value === '' ? null : Number(value)
-  emit('filter', materialId)
+const handleFilter = (value: string) => {
+  emit('filter', filter(value))
 }
-
-onMounted(() => {
-  store.loadMaterials()
-})
 </script>
 
 <style scoped src="./FilterContainerStyles.css"></style>

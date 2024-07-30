@@ -55,12 +55,14 @@ export const useProductStore = defineStore('product', () => {
     return products.value.filter((product) => product.material === materialId)
   }
 
-  const sortProducts = (order: 'asc' | 'desc') => {
-    return products.value.sort((a, b) =>
-      order === 'asc'
-        ? a.price.current_price - b.price.current_price
-        : b.price.current_price - a.price.current_price
-    )
+  const sortProducts = (productsToSort: Product[], order: 'asc' | 'desc') => {
+    return productsToSort
+      .slice()
+      .sort((a, b) =>
+        order === 'asc'
+          ? a.price.current_price - b.price.current_price
+          : b.price.current_price - a.price.current_price
+      )
   }
 
   return {
